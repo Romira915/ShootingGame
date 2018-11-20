@@ -20,10 +20,10 @@ void BalletMgr::Instance_Ballet(const VECTOR &pos_BMgrInst, const eName &name_BM
 {
 	for (int i = 0; i < BALLET_MAX; i++)
 	{
-		if (ballet_child[i] != NULL)
+		if (ballet_child[i] == NULL)
 		{
 			ballet_child[i] = new Ballet(pos_BMgrInst, name_BMgrInst, image);
-			break;
+			return;
 		}
 	}
 }

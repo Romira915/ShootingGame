@@ -3,13 +3,14 @@
 #include <DxLib.h>
 #define SPEED 4.5
 
+typedef enum { ePlayer, eEnemy, eBallet, eBalletMgr }eName;
+
 class Chara
 {
 public:
 	Chara();
 	~Chara();
 
-	typedef enum { ePlayer, eEnemy, eBallet, eBalletMgr }eName;
 	eName name;
 
 	virtual void init() = 0;

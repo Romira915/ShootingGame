@@ -14,12 +14,13 @@ Ballet::~Ballet()
 {
 }
 
-Ballet::Ballet(const VECTOR &pos_Inst, const eName &name_Inst)
+Ballet::Ballet(const VECTOR &pos_Inst, const eName &name_Inst, int *pimage_ballet)
 {
 	name = eBallet;
 	m_speed = SPEED * 2;
 	pos = pos_Inst;
 	is_Insted = name_Inst;
+	image = pimage_ballet;
 }
 
 void Ballet::init()
@@ -39,14 +40,14 @@ void Ballet::Update()
 
 void Ballet::Draw()
 {
-	
+	DrawGraph(pos.x, pos.y, *image, true);
 }
 
 void Ballet::End()
 {
 }
 
-void Ballet::Instance_this(const VECTOR &pos_Inst,const eName &name_Inst)
+void Ballet::Instance_this(const VECTOR &pos_Inst, const eName &name_Inst)
 {
 	pos = pos_Inst;
 	is_Insted = name_Inst;

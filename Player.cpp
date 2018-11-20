@@ -3,6 +3,8 @@
 #include "Keyboard.h"
 #include "Other.h"
 #include "Chara.h"
+#include "BalletMgr.h"
+#include "Battle.h"
 
 
 Player::Player()
@@ -17,7 +19,9 @@ Player::~Player()
 
 void Player::init()
 {
+	image = new int;
 	*image = LoadGraph("‰æ‘œ/Ž©‹@.png");
+	name = ePlayer;
 }
 
 void Player::Update()
@@ -34,6 +38,9 @@ void Player::Update()
 	if (Get_key(KEY_INPUT_S) >= 1) {
 		Move_Down();
 	}
+	if (Get_key(KEY_INPUT_SPACE) >= 1) {
+		BalletMgr_Inst(pos, name);
+	}
 }
 
 void Player::Draw()
@@ -44,4 +51,5 @@ void Player::Draw()
 void Player::End()
 {
 	DeleteGraph(*image);
+	delete image;
 }

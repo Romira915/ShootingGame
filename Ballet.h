@@ -9,15 +9,15 @@ class Ballet :public Chara
 public:
 	Ballet();
 	~Ballet();
-	Ballet(const VECTOR&, const eName&);
+	Ballet(const VECTOR&, const eName&, int*);
 
 	void init();
 	void Update();
 	void Draw();
 	void End();
 
-	void Instance_this(const VECTOR&,const eName&);
-	void Move_direction(const VECTOR&,const eName&);
+	void Instance_this(const VECTOR&, const eName&);
+	void Move_direction(const VECTOR&, const eName&);
 
 	eName is_Insted;
 };

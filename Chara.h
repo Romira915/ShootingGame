@@ -9,7 +9,7 @@ public:
 	Chara();
 	~Chara();
 
-	typedef enum { player, enemy, ballet }eName;
+	typedef enum { ePlayer, eEnemy, eBallet, eBalletMgr }eName;
 	eName name;
 
 	virtual void init() = 0;

@@ -1,12 +1,5 @@
-﻿  Ballet.cpp
-  Battle.cpp
-  Chara.cpp
-  Keyboard.cpp
-  Other.cpp
+﻿  BalletMgr.cpp
   Player.cpp
 c:\mylibrary\shootinggame\player.cpp(41): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-  SceneManager.cpp
-  main.cpp
   コードを生成中...
-  LINK : 前回のインクリメンタル リンクで C:\MyLibrary\ShootingGame\Debug\ShootingGame.exe が見つからなかったか、ビルドされませんでした。フル リンクを行います。
   ShootingGame.vcxproj -> C:\MyLibrary\ShootingGame\Debug\ShootingGame.exe

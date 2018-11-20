@@ -8,7 +8,7 @@
 Player::Player()
 {
 	m_timecount = 0;
-	name = player;
+	name = ePlayer;
 }
 
 Player::~Player()

@@ -5,7 +5,7 @@
 
 Ballet::Ballet()
 {
-	name = ballet;
+	name = eBallet;
 	m_speed = SPEED * 2;
 }
 
@@ -16,7 +16,7 @@ Ballet::~Ballet()
 
 Ballet::Ballet(const VECTOR &pos_Inst, const eName &name_Inst)
 {
-	name = ballet;
+	name = eBallet;
 	m_speed = SPEED * 2;
 	pos = pos_Inst;
 	is_Insted = name_Inst;
@@ -29,10 +29,10 @@ void Ballet::init()
 
 void Ballet::Update()
 {
-	if (is_Insted == player) {
+	if (is_Insted == ePlayer) {
 		pos.y -= m_speed;
 	}
-	if (is_Insted == enemy) {
+	if (is_Insted == eEnemy) {
 		pos.y += m_speed;
 	}
 }

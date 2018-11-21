@@ -54,7 +54,7 @@ void Enemy::Move_AI(const int &destX, const int &destY)
 	static int moveCount = 0;
 	moveCount += Timecount_return();
 
-	if (moveCount >= GetRand(3000) + 3000) {
+	if (moveCount >= GetRand(10000) + 10000) {
 		Destination(destX, destY);
 	}
 }

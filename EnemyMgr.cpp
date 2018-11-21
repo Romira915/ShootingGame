@@ -37,13 +37,24 @@ void EnemyMgr::init()
 
 void EnemyMgr::Update()
 {
+	static int enecountX[ENEMY_MAX];
+	static int enecountY[ENEMY_MAX];
+	static int count_jj;
+	count_jj++;
+	if (count_jj > ENEMY_MAX)
+	{
+		count_jj = 0;
+	}
+	SRand(GetNowCount());
+	enecountX[count_jj] = GetRand(SET_SCREENSIZE_X);
+	enecountY[count_jj] = GetRand(SET_SCREENSIZE_Y / 2);
+
 	for (int i = 0; i < ENEMY_MAX; i++)
 	{
 		if (enemy_child[i] != NULL)
 		{
 			enemy_child[i]->Update();
-			SRand(enemy_child[i]->Get_pos().x);
-			enemy_child[i]->Move_AI(GetRand(SET_SCREENSIZE_X), GetRand(SET_SCREENSIZE_Y / 2));
+			enemy_child[i]->Move_AI(enecountX[i], enecountY[i]);
 		}
 	}
 

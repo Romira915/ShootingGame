@@ -4,13 +4,17 @@
 #include "Battle.h"
 #include "BalletMgr.h"
 #include "Chara.h"
+#include "EnemyMgr.h"
+#include "SceneManager.h"
+#include <cstdlib>
 
 int image_bg_ba;
 int image_end;
 int image_clear;
 
-Player player;
-BalletMgr balletMgr;
+Player *player;
+BalletMgr *balletMgr;
+EnemyMgr *enemyMgr;
 
 
 void Battle_init()
@@ -19,20 +23,33 @@ void Battle_init()
 	image_end = LoadGraph("‰æ‘œ/I—¹.png");
 	image_clear = LoadGraph("‰æ‘œ/ƒNƒŠƒA.png");
 
-	player.init();
-	balletMgr.init();
+	player = new Player;
+	balletMgr = new BalletMgr;
+	enemyMgr = new EnemyMgr;
+
+	player->init();
+	balletMgr->init();
+	enemyMgr->init();
 }
 
 void Battle_Update() {
-	player.Update();
-	balletMgr.Update();
+	Enemy_Inst_Update();
+	balletMgr->Update();
+	enemyMgr->Update();
+	player->Update();
+
+
+	if (Get_key(KEY_INPUT_ESCAPE) == 1) {
+		SceneChange(Title);
+	}
 }
 
 void Battle_Draw()
 {
 	DrawGraph(0, 0, image_bg_ba, true);
-	balletMgr.Draw();
-	player.Draw();
+	balletMgr->Draw();
+	enemyMgr->Draw();
+	player->Draw();
 }
 
 void Battle_End()
@@ -41,13 +58,26 @@ void Battle_End()
 	DeleteGraph(image_end);
 	DeleteGraph(image_clear);
 
-	player.End();
-	balletMgr.End();
+	balletMgr->End();
+	enemyMgr->End();
+	player->End();
+
+	delete balletMgr;
+	delete enemyMgr;
+	delete player;
 }
 
-void BalletMgr_Inst(const VECTOR &pos_battlefunc, const eName &name_battlefunc)
+void Ballet_Inst(const VECTOR &pos_battlefunc, const eName &name_battlefunc)
 {
-	balletMgr.Instance_Ballet(pos_battlefunc, name_battlefunc);
+	balletMgr->Instance_Ballet(pos_battlefunc, name_battlefunc);
+}
+
+void Enemy_Inst_Update()
+{
+	srand(GetNowCount());
+	if (rand() % 10 == 0) {
+		enemyMgr->Instance_Enemy();
+	}
 }
 
 

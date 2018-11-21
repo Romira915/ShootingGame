@@ -22,6 +22,7 @@ Ballet::Ballet(const VECTOR &pos_Inst, const eName &name_Inst, int *pimage_balle
 	m_speed = SPEED * 2;
 	pos = pos_Inst;
 	pos.x += 20; // プレイヤーの先端から弾が発射されるように調整
+
 	is_Insted = name_Inst;
 	image = pimage_ballet;
 }

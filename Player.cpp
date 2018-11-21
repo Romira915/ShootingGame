@@ -13,6 +13,9 @@ Player::Player()
 	m_timecount = 0;
 	image = new int;
 	name = ePlayer;
+
+	pos.x = SET_SCREENSIZE_X / 2;
+	pos.y = SET_SCREENSIZE_Y / 2;
 }
 
 Player::~Player()
@@ -48,7 +51,7 @@ void Player::Update()
 	}
 
 	if (Get_key(KEY_INPUT_SPACE) >= 1 && m_timecount >= SHOT_PACE) {
-		BalletMgr_Inst(pos, name);
+		Ballet_Inst(pos, name);
 		m_timecount = 0;
 	}
 }

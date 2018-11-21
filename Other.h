@@ -1,13 +1,14 @@
 #ifndef DEF_OTHER_H
 #define DEF_OTHER_H
 
-#define START_X 100
-#define START_Y 400
-#define EXIT_X 100
-#define EXIT_Y 500
-
 #define SET_SCREENSIZE_X 1280
 #define SET_SCREENSIZE_Y 720
+
+#define START_X (int)(0.25 * SET_SCREENSIZE_X)
+#define START_Y (int)(0.6 * SET_SCREENSIZE_Y)
+#define EXIT_X (int)(0.25 * SET_SCREENSIZE_X)
+#define EXIT_Y (int)(0.7 * SET_SCREENSIZE_Y)
+
 
 void Title_init(); // É^ÉCÉgÉãâÊñ ÇÃèâä˙âª
 

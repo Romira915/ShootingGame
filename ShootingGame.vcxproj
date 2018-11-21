@@ -149,6 +149,8 @@
     <ClCompile Include="BalletMgr.cpp" />
     <ClCompile Include="Battle.cpp" />
     <ClCompile Include="Chara.cpp" />
+    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="EnemyMgr.cpp" />
     <ClCompile Include="Keyboard.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Other.cpp" />
@@ -160,6 +162,8 @@
     <ClInclude Include="BalletMgr.h" />
     <ClInclude Include="Battle.h" />
     <ClInclude Include="Chara.h" />
+    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="EnemyMgr.h" />
     <ClInclude Include="Keyboard.h" />
     <ClInclude Include="Other.h" />
     <ClInclude Include="Player.h" />

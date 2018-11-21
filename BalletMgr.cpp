@@ -2,7 +2,6 @@
 #include "BalletMgr.h"
 #include "Other.h"
 
-
 BalletMgr::BalletMgr()
 {
 	image = new int;
@@ -73,4 +72,8 @@ void BalletMgr::Draw()
 
 void BalletMgr::End()
 {
+	for (int i = 0; i < BALLET_MAX; i++)
+	{
+		delete ballet_child[i];
+	}
 }

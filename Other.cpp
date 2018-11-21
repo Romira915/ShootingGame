@@ -4,8 +4,6 @@
 #include "Chara.h"
 #include "SceneManager.h"
 
-
-
 int image_title;
 int image_bg;
 
@@ -15,11 +13,13 @@ int old_time = 0;
 int new_time = 0;
 int diff_time = 0;
 
+int font_Handle;
+
 void Title_init()
 {
 	image_title = LoadGraph("画像/タイトル.png");
 	image_bg = LoadGraph("画像/背景.png");
-	SetFontSize(64);  // 文字列のサイズをセット
+	font_Handle = CreateFontToHandle(NULL, 64, 6, DX_FONTTYPE_ANTIALIASING);
 }
 
 void Title_Update()
@@ -59,9 +59,9 @@ void Title_Draw()
 {
 	DrawGraph(0, 0, image_bg, true);
 	DrawGraph(0, 0, image_title, true);
-	DrawFormatString(0, selection, GetColor(255, 255, 255), "→");
-	DrawFormatString(START_X, START_Y, GetColor(0, 255, 0), "Start");
-	DrawFormatString(EXIT_X, EXIT_Y, GetColor(0, 255, 0), "Exit");
+	DrawStringToHandle(START_X - GetDrawStringWidthToHandle("→", 2, font_Handle), selection, "→", GetColor(255, 255, 255), font_Handle);
+	DrawStringToHandle(START_X, START_Y, "Start", GetColor(0, 255, 0), font_Handle);
+	DrawStringToHandle(EXIT_X, EXIT_Y, "Exit", GetColor(0, 255, 0), font_Handle);
 }
 
 void Title_End() {

@@ -10,7 +10,9 @@ void Battle_Draw();
 
 void Battle_End();
 
-void BalletMgr_Inst(const VECTOR&, const eName&);
+void Ballet_Inst(const VECTOR&, const eName&);
+
+void Enemy_Inst_Update();
 
 #endif // !DEF_BATTLE_H
 

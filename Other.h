@@ -1,6 +1,14 @@
 #ifndef DEF_OTHER_H
 #define DEF_OTHER_H
 
+#define START_X 100
+#define START_Y 400
+#define EXIT_X 100
+#define EXIT_Y 500
+
+#define SET_SCREENSIZE_X 1280
+#define SET_SCREENSIZE_Y 720
+
 void Title_init(); // タイトル画面の初期化
 
 void Title_Update(); // タイトル画面の更新

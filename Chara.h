@@ -23,6 +23,7 @@ public:
 	void Move_Right();
 	void Move_Left();
 
+protected:
 	VECTOR pos;
 	int *image;
 	int m_x;

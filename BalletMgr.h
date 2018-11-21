@@ -19,7 +19,7 @@ public:
 	void Draw();
 	void End();
 
-
+private:
 	Ballet *ballet_child[BALLET_MAX];
 };
 

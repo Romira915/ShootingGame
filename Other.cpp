@@ -4,10 +4,7 @@
 #include "Chara.h"
 #include "SceneManager.h"
 
-#define START_X 100
-#define START_Y 400
-#define EXIT_X 100
-#define EXIT_Y 500
+
 
 int image_title;
 int image_bg;

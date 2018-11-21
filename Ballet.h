@@ -16,9 +16,9 @@ public:
 	void Draw();
 	void End();
 
-	void Instance_this(const VECTOR&, const eName&);
-	void Move_direction(const VECTOR&, const eName&);
+	VECTOR Get_pos();
 
+private:
 	eName is_Insted;
 };
 

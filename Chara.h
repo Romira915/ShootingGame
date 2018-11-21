@@ -26,8 +26,6 @@ public:
 protected:
 	VECTOR pos;
 	int *image;
-	int m_x;
-	int m_y;
 	int m_hp;
 	float m_speed;
 };

@@ -8,6 +8,8 @@ Enemy::Enemy()
 	srand(GetNowCount());
 	pos.x = rand() % (SET_SCREENSIZE_X + 1);
 	pos.y = 0;
+
+	
 }
 
 
@@ -24,6 +26,9 @@ Enemy::Enemy(int *pimage_Enemy)
 	stop_y = (int)(rand() % (int)(SET_SCREENSIZE_Y * 0.5 / 3) * 3);
 
 	image = pimage_Enemy;
+
+	nowMovingX = false;
+	nowMovingY = false;
 }
 
 void Enemy::init()
@@ -61,13 +66,7 @@ void Enemy::Move_AI(const int &destX, const int &destY)
 
 void Enemy::Destination(const int &destination_x, const int &destination_y)
 {
-	static bool nowUsing = false; // Žg—p’†‚È‚çtrue
-	static bool nowMovingX = false;
-	static bool nowMovingY = false;
-	static int moveX;
-	static int moveY;
-	static int x_flag;
-	static int y_flag;
+	
 
 	/*if (!nowUsing)
 	{

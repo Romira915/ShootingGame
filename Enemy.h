@@ -20,6 +20,12 @@ public:
 
 private:
 	int stop_y;
+	bool nowMovingX;
+	bool nowMovingY;
+	int moveX;
+	int moveY;
+	int x_flag;
+	int y_flag;
 };
 
 #endif // !DEF_ENEMY_H

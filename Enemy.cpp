@@ -5,11 +5,6 @@
 
 Enemy::Enemy()
 {
-	srand(GetNowCount());
-	pos.x = rand() % (SET_SCREENSIZE_X + 1);
-	pos.y = 0;
-
-	
 }
 
 
@@ -20,10 +15,9 @@ Enemy::~Enemy()
 Enemy::Enemy(int *pimage_Enemy)
 {
 	name = eEnemy;
-	srand(GetNowCount());
 	pos.x = rand() % (SET_SCREENSIZE_X + 1);
 	pos.y = 0;
-	stop_y = (int)(rand() % (int)(SET_SCREENSIZE_Y * 0.5 / 3) * 3);
+	m_speed = SPEED / 2;
 
 	image = pimage_Enemy;
 

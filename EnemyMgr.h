@@ -4,7 +4,7 @@
 #include "Enemy.h"
 #include "Chara.h"
 
-#define ENEMY_MAX 15
+#define ENEMY_MAX 7
 
 class EnemyMgr : public Chara
 {

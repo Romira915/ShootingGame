@@ -5,8 +5,10 @@
 
 Ballet::Ballet()
 {
-	name = ballet;
+	name = eBallet;
 	m_speed = SPEED * 2;
+	pos.x = 0;
+	pos.y = 0;
 }
 
 
@@ -14,12 +16,14 @@ Ballet::~Ballet()
 {
 }
 
-Ballet::Ballet(const VECTOR &pos_Inst, const eName &name_Inst)
+Ballet::Ballet(const VECTOR &pos_Inst, const eName &name_Inst, int *pimage_ballet)
 {
-	name = ballet;
+	name = eBallet;
 	m_speed = SPEED * 2;
 	pos = pos_Inst;
+	pos.x += 20; // プレイヤーの先端から弾が発射されるように調整
 	is_Insted = name_Inst;
+	image = pimage_ballet;
 }
 
 void Ballet::init()
@@ -29,30 +33,24 @@ void Ballet::init()
 
 void Ballet::Update()
 {
-	if (is_Insted == player) {
-		pos.y -= m_speed;
+	if (is_Insted == ePlayer) {
+		Move_Up();
 	}
-	if (is_Insted == enemy) {
-		pos.y += m_speed;
+	if (is_Insted == eEnemy) {
+		Move_Down();
 	}
 }
 
 void Ballet::Draw()
 {
-	
+	DrawGraph(pos.x, pos.y, *image, true);
 }
 
 void Ballet::End()
 {
 }
 
-void Ballet::Instance_this(const VECTOR &pos_Inst,const eName &name_Inst)
+VECTOR Ballet::Get_pos()
 {
-	pos = pos_Inst;
-	is_Insted = name_Inst;
-}
-
-void Ballet::Move_direction(const VECTOR &pos, const eName &name_Md)
-{
-
+	return pos;
 }

@@ -3,13 +3,14 @@
 #include <DxLib.h>
 #define SPEED 4.5
 
+typedef enum { ePlayer, eEnemy, eBallet, eBalletMgr }eName;
+
 class Chara
 {
 public:
 	Chara();
 	~Chara();
 
-	typedef enum { player, enemy, ballet }eName;
 	eName name;
 
 	virtual void init() = 0;
@@ -22,6 +23,7 @@ public:
 	void Move_Right();
 	void Move_Left();
 
+protected:
 	VECTOR pos;
 	int *image;
 	int m_x;

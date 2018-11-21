@@ -2,6 +2,8 @@
 #define DEF_PLAYER_H
 #include "Chara.h"
 
+#define SHOT_PACE 150 // [ms]
+
 class Player : public Chara
 {
 public:

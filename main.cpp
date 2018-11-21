@@ -11,7 +11,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 {
 	SetOutApplicationLogValidFlag(false);
 	ChangeWindowMode(TRUE);
-	SetGraphMode(1280, 720, 32);
+	SetGraphMode(SET_SCREENSIZE_X, SET_SCREENSIZE_Y, 32);
 	SetMainWindowText("ÇÊÇ¡Ç©Ç◊Å[ÇæÅ[â¸ïœ");
 	SetWindowSizeChangeEnableFlag(true);
 	DxLib_Init();

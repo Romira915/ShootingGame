@@ -15,7 +15,7 @@ public:
 	void End();
 
 	VECTOR Get_pos();
-	void Move_AI();
+	void Move_AI(const int&, const int&);
 	void Destination(const int&, const int&);
 
 private:

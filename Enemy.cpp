@@ -32,7 +32,7 @@ void Enemy::init()
 
 void Enemy::Update()
 {
-	Move_AI();
+	//Move_AI();
 }
 
 void Enemy::Draw()
@@ -49,14 +49,13 @@ VECTOR Enemy::Get_pos()
 	return pos;
 }
 
-void Enemy::Move_AI()
+void Enemy::Move_AI(const int &destX, const int &destY)
 {
 	static int moveCount = 0;
 	moveCount += Timecount_return();
-	srand(GetNowCount());
 
-	if (moveCount >= rand() % 3000 + 3000) {
-		Destination(rand() % (SET_SCREENSIZE_X / 2), rand() % (SET_SCREENSIZE_Y / 2));
+	if (moveCount >= GetRand(3000) + 3000) {
+		Destination(destX, destY);
 	}
 }
 
@@ -70,7 +69,7 @@ void Enemy::Destination(const int &destination_x, const int &destination_y)
 	static int x_flag;
 	static int y_flag;
 
-	if (!nowUsing)
+	/*if (!nowUsing)
 	{
 		nowUsing = true;
 		nowMovingX = true;
@@ -97,9 +96,38 @@ void Enemy::Destination(const int &destination_x, const int &destination_y)
 		if (pos.y == moveY) {
 			y_flag = 0;
 		}
+	}*/
+
+	if (!nowMovingX) {
+		nowMovingX = true;
+		moveX = destination_x;
+		if (pos.x < moveX)
+		{
+			x_flag = 1;
+		}
+		if (pos.x > moveX) {
+			x_flag = -1;
+		}
+		if (pos.x == moveX) {
+			x_flag = 0;
+		}
+	}
+	if (!nowMovingY) {
+		nowMovingY = true;
+		moveY = destination_y;
+		if (pos.y < moveY)
+		{
+			y_flag = 1;
+		}
+		if (pos.y > moveY) {
+			y_flag = -1;
+		}
+		if (pos.y == moveY) {
+			y_flag = 0;
+		}
 	}
 
-	if (nowUsing) {
+	if (nowMovingX) {
 		switch (x_flag)
 		{
 		case 1: {
@@ -126,7 +154,9 @@ void Enemy::Destination(const int &destination_x, const int &destination_y)
 		default:
 			break;
 		}
+	}
 
+	if (nowMovingY) {
 		switch (y_flag)
 		{
 		case 1: {
@@ -155,9 +185,10 @@ void Enemy::Destination(const int &destination_x, const int &destination_y)
 		}
 	}
 
-	if (!nowMovingX && !nowMovingY) {
+
+	/*if (!nowMovingX && !nowMovingY) {
 		nowUsing = false;
-	}
+	}*/
 }
 
 

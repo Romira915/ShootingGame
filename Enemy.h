@@ -15,8 +15,11 @@ public:
 	void End();
 
 	VECTOR Get_pos();
+	void Move_AI();
+	void Destination(const int&, const int&);
 
 private:
+	int stop_y;
 };
 
 #endif // !DEF_ENEMY_H

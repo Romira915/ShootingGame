@@ -1,6 +1,8 @@
 #include "Enemy.h"
 #include <cstdlib>
 #include "Other.h"
+#include "Battle.h"
+#include <math.h>
 
 
 Enemy::Enemy()
@@ -19,6 +21,8 @@ Enemy::Enemy(int *pimage_Enemy)
 	pos.y = 0;
 	m_speed = SPEED / 2;
 
+	shotCount = 0;
+
 	image = pimage_Enemy;
 
 	nowMovingX = false;
@@ -31,7 +35,18 @@ void Enemy::init()
 
 void Enemy::Update()
 {
-	//Move_AI();
+	if (shotCount >= INT_MAX - 10000) {
+		shotCount = 0;
+	}
+
+	shotCount += Timecount_return();
+
+	Move_AI();
+
+	if (fabs(Playerpos_return().x - pos.x) < GetRand(100) && shotCount >= SHOT_PACE && GetRand(2) == 0) {
+		Ballet_Inst(pos, name);
+		shotCount = 0;
+	}
 }
 
 void Enemy::Draw()
@@ -43,24 +58,14 @@ void Enemy::End()
 {
 }
 
-VECTOR Enemy::Get_pos()
+void Enemy::Move_AI()
 {
-	return pos;
-}
-
-void Enemy::Move_AI(const int &destX, const int &destY)
-{
-	static int moveCount = 0;
-	moveCount += Timecount_return();
-
-	if (moveCount >= GetRand(10000) + 10000) {
-		Destination(destX, destY);
-	}
+	Destination(GetRand(SET_SCREENSIZE_X), GetRand(SET_SCREENSIZE_Y / 2));
 }
 
 void Enemy::Destination(const int &destination_x, const int &destination_y)
 {
-	
+
 
 	/*if (!nowUsing)
 	{

@@ -14,6 +14,8 @@ void Ballet_Inst(const VECTOR&, const eName&);
 
 void Enemy_Inst_Update();
 
+VECTOR Playerpos_return();
+
 #endif // !DEF_BATTLE_H
 
 

@@ -74,10 +74,14 @@ void Ballet_Inst(const VECTOR &pos_battlefunc, const eName &name_battlefunc)
 
 void Enemy_Inst_Update()
 {
-	srand(GetNowCount());
-	if (rand() % 10 == 0) {
+	if (GetRand(10) == 0) {
 		enemyMgr->Instance_Enemy();
 	}
+}
+
+VECTOR Playerpos_return()
+{
+	return player->Get_pos();
 }
 
 

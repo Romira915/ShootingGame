@@ -16,8 +16,6 @@ public:
 	void Draw();
 	void End();
 
-	VECTOR Get_pos();
-
 private:
 	eName is_Insted;
 };

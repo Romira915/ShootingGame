@@ -23,6 +23,10 @@ public:
 	void Move_Right();
 	void Move_Left();
 
+	VECTOR Get_pos();
+
+	bool Death_is_true();
+
 protected:
 	VECTOR pos;
 	int *image;

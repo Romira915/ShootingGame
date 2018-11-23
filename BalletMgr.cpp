@@ -49,8 +49,8 @@ void BalletMgr::Update()
 	{
 		if (ballet_child[i] != NULL)
 		{
-			if (ballet_child[i]->Get_pos().x < -200 || ballet_child[i]->Get_pos().x > SET_SCREENSIZE_X + 200
-				|| ballet_child[i]->Get_pos().y < -200 || ballet_child[i]->Get_pos().y > SET_SCREENSIZE_Y + 200)
+			if (ballet_child[i]->Get_pos().x < 0 || ballet_child[i]->Get_pos().x > SET_SCREENSIZE_X
+				|| ballet_child[i]->Get_pos().y < 0 || ballet_child[i]->Get_pos().y > SET_SCREENSIZE_Y)
 			{
 				delete ballet_child[i];
 				ballet_child[i] = NULL;

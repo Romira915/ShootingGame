@@ -2,6 +2,8 @@
 #define DEF_ENEMY_H
 #include "Chara.h"
 
+#define SHOT_PACE 300
+
 class Enemy : public Chara
 {
 public:
@@ -14,8 +16,7 @@ public:
 	void Draw();
 	void End();
 
-	VECTOR Get_pos();
-	void Move_AI(const int&, const int&);
+	void Move_AI();
 	void Destination(const int&, const int&);
 
 private:
@@ -26,6 +27,8 @@ private:
 	int moveY;
 	int x_flag;
 	int y_flag;
+
+	int shotCount;
 };
 
 #endif // !DEF_ENEMY_H

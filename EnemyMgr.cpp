@@ -42,7 +42,7 @@ void EnemyMgr::Update()
 		if (enemy_child[i] != NULL)
 		{
 			enemy_child[i]->Update();
-			enemy_child[i]->Move_AI(GetRand(SET_SCREENSIZE_X), GetRand(SET_SCREENSIZE_Y / 2));
+			//enemy_child[i]->Move_AI(GetRand(SET_SCREENSIZE_X), GetRand(SET_SCREENSIZE_Y / 2));
 		}
 	}
 

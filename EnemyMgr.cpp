@@ -1,6 +1,7 @@
 #include <DxLib.h>
 #include "EnemyMgr.h"
 #include "Other.h"
+#include <climits>
 
 
 EnemyMgr::EnemyMgr()
@@ -41,6 +42,7 @@ void EnemyMgr::Update()
 		if (enemy_child[i] != NULL)
 		{
 			enemy_child[i]->Update();
+			enemy_child[i]->Move_AI(GetRand(SET_SCREENSIZE_X), GetRand(SET_SCREENSIZE_Y / 2));
 		}
 	}
 

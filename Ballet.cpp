@@ -5,10 +5,6 @@
 
 Ballet::Ballet()
 {
-	name = eBallet;
-	m_speed = SPEED * 2;
-	pos.x = 0;
-	pos.y = 0;
 }
 
 

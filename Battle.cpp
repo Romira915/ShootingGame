@@ -12,6 +12,10 @@ int image_bg_ba;
 int image_end;
 int image_clear;
 
+int player_imageSize;
+int ballet_imageSize;
+int enemy_imageSize;
+
 Player *player;
 BalletMgr *balletMgr;
 EnemyMgr *enemyMgr;
@@ -82,6 +86,10 @@ void Enemy_Inst_Update()
 VECTOR Playerpos_return()
 {
 	return player->Get_pos();
+}
+
+void Collision()
+{
 }
 
 

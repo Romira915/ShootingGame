@@ -16,6 +16,8 @@ void Enemy_Inst_Update();
 
 VECTOR Playerpos_return();
 
+void Collision();
+
 #endif // !DEF_BATTLE_H
 
 

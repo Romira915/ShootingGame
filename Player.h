@@ -9,6 +9,7 @@ class Player : public Chara
 public:
 	Player();
 	~Player();
+
 	void init();
 	void Update();
 	void Draw();

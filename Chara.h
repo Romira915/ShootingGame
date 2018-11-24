@@ -26,6 +26,7 @@ public:
 	VECTOR Get_pos();
 
 	bool Death_is_true();
+	void Damage();
 
 protected:
 	VECTOR pos;

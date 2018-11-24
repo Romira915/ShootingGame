@@ -30,6 +30,28 @@ void EnemyMgr::Instance_Enemy()
 	}
 }
 
+VECTOR * EnemyMgr::Enemy_Allpos()
+{
+	VECTOR ptr_enemypos[ENEMY_MAX];
+	for (int i = 0; i < ENEMY_MAX; i++)
+	{
+		if (enemy_child[i] != NULL) {
+			ptr_enemypos[i] = enemy_child[i]->Get_pos();
+		}
+		else
+		{
+			ptr_enemypos->x = -1;
+			ptr_enemypos->y = -1;
+		}
+	}
+	return ptr_enemypos;
+}
+
+void EnemyMgr::Damage_Mgr(int i)
+{
+	enemy_child[i]->Damage();
+}
+
 void EnemyMgr::init()
 {
 	*image = LoadGraph("‰æ‘œ/‚Ä‚«.png");
@@ -51,7 +73,8 @@ void EnemyMgr::Update()
 		if (enemy_child[i] != NULL)
 		{
 			if (enemy_child[i]->Get_pos().x < 0 || enemy_child[i]->Get_pos().x > SET_SCREENSIZE_X
-				|| enemy_child[i]->Get_pos().y < 0 || enemy_child[i]->Get_pos().y > SET_SCREENSIZE_Y)
+				|| enemy_child[i]->Get_pos().y < 0 || enemy_child[i]->Get_pos().y > SET_SCREENSIZE_Y
+				|| Death_is_true())
 			{
 				delete enemy_child[i];
 				enemy_child[i] = NULL;

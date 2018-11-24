@@ -13,6 +13,8 @@ public:
 	~BalletMgr();
 
 	void Instance_Ballet(const VECTOR&, const eName&);
+	VECTOR *Ballet_Allpos(eName*);
+	void Damage_Mgr(int);
 
 	void init();
 	void Update();

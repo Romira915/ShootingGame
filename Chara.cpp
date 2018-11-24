@@ -50,3 +50,8 @@ bool Chara::Death_is_true()
 		return false;
 	}
 }
+
+void Chara::Damage()
+{
+	m_hp--;
+}

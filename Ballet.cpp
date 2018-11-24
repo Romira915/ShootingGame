@@ -49,6 +49,8 @@ void Ballet::End()
 
 VECTOR Ballet::Get_pos(eName * shot_name)
 {
-	*shot_name = is_Insted;
+	if (shot_name != NULL) {
+		*shot_name = is_Insted;
+	}
 	return pos;
 }

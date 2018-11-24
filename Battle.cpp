@@ -40,7 +40,12 @@ void Battle_Update() {
 	Enemy_Inst_Update();
 	balletMgr->Update();
 	enemyMgr->Update();
-	player->Update();
+	if (!player->Death_is_true())
+	{
+		player->Update();
+	}
+
+	Collision();
 
 
 	if (Get_key(KEY_INPUT_ESCAPE) == 1) {
@@ -53,7 +58,10 @@ void Battle_Draw()
 	DrawGraph(0, 0, image_bg_ba, true);
 	balletMgr->Draw();
 	enemyMgr->Draw();
-	player->Draw();
+	if (!player->Death_is_true())
+	{
+		player->Draw();
+	}
 }
 
 void Battle_End()
@@ -90,7 +98,36 @@ VECTOR Playerpos_return()
 
 void Collision()
 {
+	eName is_Insted[BALLET_MAX];
 
+	VECTOR playerpos = player->Get_pos();
+	VECTOR *enemypos = enemyMgr->Enemy_Allpos();
+	VECTOR *balletpos = balletMgr->Ballet_Allpos(is_Insted);
+
+	for (int i = 0; i < BALLET_MAX; i++)
+	{
+		switch (is_Insted[i])
+		{
+		case eEnemy: {
+			if (playerpos.x <= balletpos[i].x && balletpos[i].x <= playerpos.x + 50 && playerpos.y <= balletpos[i].y && balletpos[i].y <= playerpos.y + 50)
+			{
+				delete player;
+			}
+		}
+		case ePlayer: {
+			for (int j = 0; j < ENEMY_MAX; j++)
+			{
+				if (enemypos[j].x <= balletpos[i].x && balletpos[i].x <= enemypos[j].x + 50 && enemypos[j].y <= balletpos[i].y && balletpos[i].y <= enemypos[j].y + 50)
+				{
+					enemyMgr->Damage_Mgr(j);
+				}
+			}
+		}
+		default:
+			break;
+		}
+
+	}
 }
 
 

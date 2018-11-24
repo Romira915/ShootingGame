@@ -90,6 +90,7 @@ VECTOR Playerpos_return()
 
 void Collision()
 {
+
 }
 
 

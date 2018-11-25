@@ -130,4 +130,15 @@ void Collision()
 	}
 }
 
+bool Collision(Player *ptrplayerobj_pos, Ballet *ptr_balletobj)
+{
+	int playerwidth;
+	int height;
+	GetGraphSize(*ptr_balletobj->Get_ptrimageHandle(), &width, &height);
+}
+
+bool Collision(Enemy *, Ballet *)
+{
+}
+
 

@@ -24,6 +24,7 @@ public:
 	void Move_Left();
 
 	VECTOR Get_pos();
+	int *Get_ptrimageHandle();
 
 	bool Death_is_true();
 	void Damage();

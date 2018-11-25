@@ -39,6 +39,11 @@ VECTOR Chara::Get_pos()
 	return pos;
 }
 
+int * Chara::Get_ptrimageHandle()
+{
+	return image;
+}
+
 bool Chara::Death_is_true()
 {
 	if (m_hp <= 0)

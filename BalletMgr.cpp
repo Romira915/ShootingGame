@@ -52,6 +52,11 @@ void BalletMgr::Damage_Mgr(int i)
 	ballet_child[i]->Damage();
 }
 
+Ballet ** BalletMgr::Get_balletchild()
+{
+	return ballet_child;
+}
+
 void BalletMgr::init()
 {
 	*image = LoadGraph("‰æ‘œ/‚½‚Ü.png");

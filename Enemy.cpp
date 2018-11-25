@@ -43,7 +43,7 @@ void Enemy::Update()
 
 	Move_AI();
 
-	if (fabs(Playerpos_return().x - pos.x) < GetRand(100) && shotCount >= SHOT_PACE && GetRand(2) == 0) {
+	if (fabs(Playerpos_return().x - pos.x) < GetRand(100) && shotCount >= SHOT_PACE_ENEMY && GetRand(2) == 0) {
 		Ballet_Inst(pos, name);
 		shotCount = 0;
 	}

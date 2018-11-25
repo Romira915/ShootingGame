@@ -52,6 +52,11 @@ void EnemyMgr::Damage_Mgr(int i)
 	enemy_child[i]->Damage();
 }
 
+Enemy ** EnemyMgr::Get_enemychild()
+{
+	return enemy_child;
+}
+
 void EnemyMgr::init()
 {
 	*image = LoadGraph("‰æ‘œ/‚Ä‚«.png");

@@ -54,3 +54,8 @@ VECTOR Ballet::Get_pos(eName * shot_name)
 	}
 	return pos;
 }
+
+eName Ballet::Get_isInsted()
+{
+	return is_Insted;
+}

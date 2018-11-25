@@ -2,7 +2,7 @@
 #define DEF_PLAYER_H
 #include "Chara.h"
 
-#define SHOT_PACE 150 // [ms]
+#define SHOT_PACE_PLAYER 150 // [ms]
 
 class Player : public Chara
 {

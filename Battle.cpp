@@ -101,44 +101,71 @@ void Collision()
 	eName is_Insted[BALLET_MAX];
 
 	VECTOR playerpos = player->Get_pos();
-	VECTOR *enemypos = enemyMgr->Enemy_Allpos();
-	VECTOR *balletpos = balletMgr->Ballet_Allpos(is_Insted);
+	Enemy **enemyobj = enemyMgr->Get_enemychild();
+	Ballet **balletobj = balletMgr->Get_balletchild();
+
+	int p_width, p_height;
+	int e_width, e_height;
+	int b_width, b_height;
+
+	GetGraphSize(*(player->Get_ptrimageHandle()), &p_width, &p_height);
+	GetGraphSize(*(enemyMgr->Get_ptrimageHandle()), &e_width, &e_height);
+	GetGraphSize(*(balletMgr->Get_ptrimageHandle()), &b_width, &b_height);
 
 	for (int i = 0; i < BALLET_MAX; i++)
 	{
-		switch (is_Insted[i])
+		if (balletobj[i] != NULL)
 		{
-		case eEnemy: {
-			if (playerpos.x <= balletpos[i].x && balletpos[i].x <= playerpos.x + 50 && playerpos.y <= balletpos[i].y && balletpos[i].y <= playerpos.y + 50)
+			switch (balletobj[i]->Get_isInsted())
 			{
-				delete player;
-			}
-		}
-		case ePlayer: {
-			for (int j = 0; j < ENEMY_MAX; j++)
-			{
-				if (enemypos[j].x <= balletpos[i].x && balletpos[i].x <= enemypos[j].x + 50 && enemypos[j].y <= balletpos[i].y && balletpos[i].y <= enemypos[j].y + 50)
+			case eEnemy: {
+				if (((balletobj[i]->Get_pos(NULL).x < playerpos.x && playerpos.x < balletobj[i]->Get_pos(NULL).x + b_width)
+					|| (playerpos.x < balletobj[i]->Get_pos(NULL).x && balletobj[i]->Get_pos(NULL).x < playerpos.x + p_width))
+					&& (balletobj[i]->Get_pos(NULL).y < playerpos.y + 10 && playerpos.y + 10 < balletobj[i]->Get_pos(NULL).y + b_height)
+					|| (playerpos.y + 10 < balletobj[i]->Get_pos(NULL).y && balletobj[i]->Get_pos(NULL).y < playerpos.y + p_height))
 				{
-					enemyMgr->Damage_Mgr(j);
+					printfDx("弾の座標：(%f,%f)\nプレイヤーの座標：(%f,%f)\n", balletobj[i]->Get_pos(NULL).x, balletobj[i]->Get_pos(NULL).y, playerpos.x, playerpos.y);
+					//WaitTimer(100000);
+					player->Damage();
+					balletMgr->Damage_Mgr(i);
+					printfDx("%d\n", balletobj[i]->m_hp);
 				}
 			}
+						 break;
+			case ePlayer: {
+				for (int j = 0; j < ENEMY_MAX; j++)
+				{
+					if (enemyobj[j] != NULL) {
+						if (((balletobj[i]->Get_pos(NULL).x < enemyobj[j]->Get_pos().x && enemyobj[j]->Get_pos().x < balletobj[i]->Get_pos(NULL).x + b_width)
+							|| (enemyobj[j]->Get_pos().x < balletobj[i]->Get_pos(NULL).x && balletobj[i]->Get_pos(NULL).x < enemyobj[j]->Get_pos().x + e_width))
+							&& ((balletobj[i]->Get_pos(NULL).y < enemyobj[j]->Get_pos().y && enemyobj[j]->Get_pos().y < balletobj[i]->Get_pos(NULL).y + b_height)
+								|| (enemyobj[j]->Get_pos().y < balletobj[i]->Get_pos(NULL).y && balletobj[i]->Get_pos(NULL).y < enemyobj[j]->Get_pos().y + e_height - 10)))
+						{
+							enemyobj[j]->Damage();
+							balletobj[i]->Damage();
+						}
+					}
+				}
+			}
+						  break;
+			default:
+				break;
+			}
 		}
-		default:
-			break;
-		}
-
 	}
 }
 
 bool Collision(Player *ptrplayerobj_pos, Ballet *ptr_balletobj)
 {
-	int playerwidth;
+	int width;
 	int height;
 	GetGraphSize(*ptr_balletobj->Get_ptrimageHandle(), &width, &height);
+	return false;
 }
 
 bool Collision(Enemy *, Ballet *)
 {
+	return false;
 }
 
 

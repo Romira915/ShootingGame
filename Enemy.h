@@ -2,7 +2,7 @@
 #define DEF_ENEMY_H
 #include "Chara.h"
 
-#define SHOT_PACE 300
+#define SHOT_PACE_ENEMY 300
 
 class Enemy : public Chara
 {

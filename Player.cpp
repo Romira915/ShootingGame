@@ -50,7 +50,7 @@ void Player::Update()
 		Move_Down();
 	}
 
-	if (Get_key(KEY_INPUT_SPACE) >= 1 && m_timecount >= SHOT_PACE) {
+	if (Get_key(KEY_INPUT_SPACE) >= 1 && m_timecount >= SHOT_PACE_PLAYER) {
 		Ballet_Inst(pos, name);
 		m_timecount = 0;
 	}

@@ -15,6 +15,7 @@ public:
 	void Instance_Enemy();
 	VECTOR *Enemy_Allpos();
 	void Damage_Mgr(int);
+	Enemy **Get_enemychild();
 
 	void init();
 	void Update();

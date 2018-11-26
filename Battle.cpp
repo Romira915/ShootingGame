@@ -127,7 +127,8 @@ void Collision()
 					printfDx("弾の座標：(%f,%f)\nプレイヤーの座標：(%f,%f)\n", balletobj[i]->Get_pos(NULL).x, balletobj[i]->Get_pos(NULL).y, playerpos.x, playerpos.y);
 					//WaitTimer(100000);
 					player->Damage();
-					balletMgr->Damage_Mgr(i);
+					//balletMgr->Damage_Mgr(i);
+					balletobj[i]->Damage();
 					printfDx("%d\n", balletobj[i]->m_hp);
 				}
 			}

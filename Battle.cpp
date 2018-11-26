@@ -20,6 +20,16 @@ Player *player;
 BalletMgr *balletMgr;
 EnemyMgr *enemyMgr;
 
+eName is_Insted[BALLET_MAX];
+
+VECTOR playerpos;
+Enemy **enemyobj;
+Ballet **balletobj;
+
+int p_width, p_height;
+int e_width, e_height;
+int b_width, b_height;
+
 
 void Battle_init()
 {
@@ -34,6 +44,14 @@ void Battle_init()
 	player->init();
 	balletMgr->init();
 	enemyMgr->init();
+
+	playerpos = player->Get_pos();
+	enemyobj = enemyMgr->Get_enemychild();
+	balletobj = balletMgr->Get_balletchild();
+
+	GetGraphSize(*(player->Get_ptrimageHandle()), &p_width, &p_height);
+	GetGraphSize(*(enemyMgr->Get_ptrimageHandle()), &e_width, &e_height);
+	GetGraphSize(*(balletMgr->Get_ptrimageHandle()), &b_width, &b_height);
 }
 
 void Battle_Update() {
@@ -98,19 +116,7 @@ VECTOR Playerpos_return()
 
 void Collision()
 {
-	eName is_Insted[BALLET_MAX];
 
-	VECTOR playerpos = player->Get_pos();
-	Enemy **enemyobj = enemyMgr->Get_enemychild();
-	Ballet **balletobj = balletMgr->Get_balletchild();
-
-	int p_width, p_height;
-	int e_width, e_height;
-	int b_width, b_height;
-
-	GetGraphSize(*(player->Get_ptrimageHandle()), &p_width, &p_height);
-	GetGraphSize(*(enemyMgr->Get_ptrimageHandle()), &e_width, &e_height);
-	GetGraphSize(*(balletMgr->Get_ptrimageHandle()), &b_width, &b_height);
 
 	for (int i = 0; i < BALLET_MAX; i++)
 	{
@@ -119,13 +125,13 @@ void Collision()
 			switch (balletobj[i]->Get_isInsted())
 			{
 			case eEnemy: {
-				if (((balletobj[i]->Get_pos(NULL).x < playerpos.x && playerpos.x < balletobj[i]->Get_pos(NULL).x + b_width)
+				if (((balletobj[i]->Get_pos(NULL).x < player->Get_pos().x && playerpos.x < balletobj[i]->Get_pos(NULL).x + b_width)
 					|| (playerpos.x < balletobj[i]->Get_pos(NULL).x && balletobj[i]->Get_pos(NULL).x < playerpos.x + p_width))
-					&& (balletobj[i]->Get_pos(NULL).y < playerpos.y + 10 && playerpos.y + 10 < balletobj[i]->Get_pos(NULL).y + b_height)
-					|| (playerpos.y + 10 < balletobj[i]->Get_pos(NULL).y && balletobj[i]->Get_pos(NULL).y < playerpos.y + p_height))
+					&& ((balletobj[i]->Get_pos(NULL).y < player->Get_pos().y + 10 && player->Get_pos().y + 10 < balletobj[i]->Get_pos(NULL).y + b_height)
+					|| (player->Get_pos().y + 10 < balletobj[i]->Get_pos(NULL).y && balletobj[i]->Get_pos(NULL).y < player->Get_pos().y + p_height)))
 				{
 					printfDx("弾の座標：(%f,%f)\nプレイヤーの座標：(%f,%f)\n", balletobj[i]->Get_pos(NULL).x, balletobj[i]->Get_pos(NULL).y, playerpos.x, playerpos.y);
-					//WaitTimer(100000);
+					WaitTimer(100000);
 					player->Damage();
 					//balletMgr->Damage_Mgr(i);
 					balletobj[i]->Damage();

@@ -31,6 +31,7 @@ Enemy::Enemy(int *pimage_Enemy)
 
 void Enemy::init()
 {
+
 }
 
 void Enemy::Update()

@@ -5,6 +5,8 @@
 #include "Enemy.h"
 #include "Ballet.h"
 
+#define TIMELIMIT 1 * 60 * 1000 // •ª E •ª¨•b E •b¨ƒ~ƒŠ•b
+
 void Battle_init();
 
 void Battle_Update();

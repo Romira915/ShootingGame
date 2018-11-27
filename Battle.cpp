@@ -7,6 +7,7 @@
 #include "EnemyMgr.h"
 #include "SceneManager.h"
 #include <cstdlib>
+#include "Other.h"
 
 int image_bg_ba;
 int image_end;
@@ -30,6 +31,8 @@ int p_width, p_height;
 int e_width, e_height;
 int b_width, b_height;
 
+int fontHandle_Battle;
+double limit;
 
 void Battle_init()
 {
@@ -52,9 +55,14 @@ void Battle_init()
 	GetGraphSize(*(player->Get_ptrimageHandle()), &p_width, &p_height);
 	GetGraphSize(*(enemyMgr->Get_ptrimageHandle()), &e_width, &e_height);
 	GetGraphSize(*(balletMgr->Get_ptrimageHandle()), &b_width, &b_height);
+
+	fontHandle_Battle = CreateFontToHandle(NULL, 64, 7, DX_FONTTYPE_ANTIALIASING_EDGE_4X4);
+	limit = TIMELIMIT;
 }
 
 void Battle_Update() {
+	limit -= Timecount_return();
+
 	Enemy_Inst_Update();
 	balletMgr->Update();
 	enemyMgr->Update();
@@ -69,17 +77,33 @@ void Battle_Update() {
 	if (Get_key(KEY_INPUT_ESCAPE) == 1) {
 		SceneChange(Title);
 	}
+	if (Get_key(KEY_INPUT_RETURN) == 2 && limit < 0)
+	{
+		SceneChange(Title);
+	}
 }
 
 void Battle_Draw()
 {
 	DrawGraph(0, 0, image_bg_ba, true);
-	balletMgr->Draw();
-	enemyMgr->Draw();
+	if (limit >= 0) {
+		balletMgr->Draw();
+		enemyMgr->Draw();
+		DrawFormatStringFToHandle(0, 0, GetColor(255, 255, 255), fontHandle_Battle, "%.2f", limit / 1000);
+	}
+	else
+	{
+		DrawGraph(0, 0, image_clear, true);
+	}
 	if (!player->Death_is_true())
 	{
 		player->Draw();
 	}
+	else
+	{
+		DrawGraph(0, 0, image_end, true);
+	}
+
 }
 
 void Battle_End()
@@ -125,17 +149,14 @@ void Collision()
 			switch (balletobj[i]->Get_isInsted())
 			{
 			case eEnemy: {
-				if (((balletobj[i]->Get_pos(NULL).x < player->Get_pos().x && playerpos.x < balletobj[i]->Get_pos(NULL).x + b_width)
-					|| (playerpos.x < balletobj[i]->Get_pos(NULL).x && balletobj[i]->Get_pos(NULL).x < playerpos.x + p_width))
+				if (((balletobj[i]->Get_pos(NULL).x < player->Get_pos().x && player->Get_pos().x < balletobj[i]->Get_pos(NULL).x + b_width)
+					|| (player->Get_pos().x < balletobj[i]->Get_pos(NULL).x && balletobj[i]->Get_pos(NULL).x < player->Get_pos().x + p_width))
 					&& ((balletobj[i]->Get_pos(NULL).y < player->Get_pos().y + 10 && player->Get_pos().y + 10 < balletobj[i]->Get_pos(NULL).y + b_height)
-					|| (player->Get_pos().y + 10 < balletobj[i]->Get_pos(NULL).y && balletobj[i]->Get_pos(NULL).y < player->Get_pos().y + p_height)))
+						|| (player->Get_pos().y + 10 < balletobj[i]->Get_pos(NULL).y && balletobj[i]->Get_pos(NULL).y < player->Get_pos().y + p_height)))
 				{
-					printfDx("弾の座標：(%f,%f)\nプレイヤーの座標：(%f,%f)\n", balletobj[i]->Get_pos(NULL).x, balletobj[i]->Get_pos(NULL).y, playerpos.x, playerpos.y);
-					WaitTimer(100000);
 					player->Damage();
 					//balletMgr->Damage_Mgr(i);
 					balletobj[i]->Damage();
-					printfDx("%d\n", balletobj[i]->m_hp);
 				}
 			}
 						 break;

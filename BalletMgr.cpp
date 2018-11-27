@@ -78,7 +78,7 @@ void BalletMgr::Update()
 		{
 			if (ballet_child[i]->Get_pos(NULL).x < 0 || ballet_child[i]->Get_pos(NULL).x > SET_SCREENSIZE_X
 				|| ballet_child[i]->Get_pos(NULL).y < 0 || ballet_child[i]->Get_pos(NULL).y > SET_SCREENSIZE_Y
-				|| Death_is_true())
+				|| ballet_child[i]->Death_is_true())
 			{
 				delete ballet_child[i];
 				ballet_child[i] = NULL;

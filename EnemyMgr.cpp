@@ -79,7 +79,7 @@ void EnemyMgr::Update()
 		{
 			if (enemy_child[i]->Get_pos().x < 0 || enemy_child[i]->Get_pos().x > SET_SCREENSIZE_X
 				|| enemy_child[i]->Get_pos().y < 0 || enemy_child[i]->Get_pos().y > SET_SCREENSIZE_Y
-				|| Death_is_true())
+				|| enemy_child[i]->Death_is_true())
 			{
 				delete enemy_child[i];
 				enemy_child[i] = NULL;

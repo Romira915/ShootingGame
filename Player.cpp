@@ -50,6 +50,23 @@ void Player::Update()
 		Move_Down();
 	}
 
+	if (pos.x < 0)
+	{
+		pos.x = 0;
+	}
+	if (pos.x > SET_SCREENSIZE_X)
+	{
+		pos.x = SET_SCREENSIZE_X;
+	}
+	if (pos.y < SET_SCREENSIZE_Y / 2)
+	{
+		pos.y = SET_SCREENSIZE_Y / 2;
+	}
+	if (pos.y > SET_SCREENSIZE_Y)
+	{
+		pos.y = SET_SCREENSIZE_Y;
+	}
+
 	if (Get_key(KEY_INPUT_SPACE) >= 1 && m_timecount >= SHOT_PACE_PLAYER) {
 		Ballet_Inst(pos, name);
 		m_timecount = 0;

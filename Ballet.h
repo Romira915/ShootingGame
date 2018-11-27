@@ -16,7 +16,8 @@ public:
 	void Draw();
 	void End();
 
-	VECTOR Get_pos();
+	VECTOR Get_pos(eName *shot_name);
+	eName Get_isInsted();
 
 private:
 	eName is_Insted;

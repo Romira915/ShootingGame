@@ -33,3 +33,30 @@ void Chara::Move_Left()
 {
 	pos.x -= m_speed;
 }
+
+VECTOR Chara::Get_pos()
+{
+	return pos;
+}
+
+int * Chara::Get_ptrimageHandle()
+{
+	return image;
+}
+
+bool Chara::Death_is_true()
+{
+	if (m_hp <= 0)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+void Chara::Damage()
+{
+	m_hp--;
+}

@@ -17,7 +17,7 @@ Ballet::Ballet(const VECTOR &pos_Inst, const eName &name_Inst, int *pimage_balle
 	name = eBallet;
 	m_speed = SPEED * 2;
 	pos = pos_Inst;
-	pos.x += 20; // プレイヤーの先端から弾が発射されるように調整
+	pos.x += 20; // 先端から弾が発射されるように調整
 
 	is_Insted = name_Inst;
 	image = pimage_ballet;
@@ -47,7 +47,15 @@ void Ballet::End()
 {
 }
 
-VECTOR Ballet::Get_pos()
+VECTOR Ballet::Get_pos(eName * shot_name)
 {
+	if (shot_name != NULL) {
+		*shot_name = is_Insted;
+	}
 	return pos;
+}
+
+eName Ballet::Get_isInsted()
+{
+	return is_Insted;
 }

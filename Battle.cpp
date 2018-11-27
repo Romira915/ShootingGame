@@ -23,7 +23,6 @@ EnemyMgr *enemyMgr;
 
 eName is_Insted[BALLET_MAX];
 
-VECTOR playerpos;
 Enemy **enemyobj;
 Ballet **balletobj;
 
@@ -48,7 +47,6 @@ void Battle_init()
 	balletMgr->init();
 	enemyMgr->init();
 
-	playerpos = player->Get_pos();
 	enemyobj = enemyMgr->Get_enemychild();
 	balletobj = balletMgr->Get_balletchild();
 
@@ -140,8 +138,6 @@ VECTOR Playerpos_return()
 
 void Collision()
 {
-
-
 	for (int i = 0; i < BALLET_MAX; i++)
 	{
 		if (balletobj[i] != NULL)
@@ -155,7 +151,6 @@ void Collision()
 						|| (player->Get_pos().y + 10 < balletobj[i]->Get_pos(NULL).y && balletobj[i]->Get_pos(NULL).y < player->Get_pos().y + p_height)))
 				{
 					player->Damage();
-					//balletMgr->Damage_Mgr(i);
 					balletobj[i]->Damage();
 				}
 			}
@@ -181,19 +176,6 @@ void Collision()
 			}
 		}
 	}
-}
-
-bool Collision(Player *ptrplayerobj_pos, Ballet *ptr_balletobj)
-{
-	int width;
-	int height;
-	GetGraphSize(*ptr_balletobj->Get_ptrimageHandle(), &width, &height);
-	return false;
-}
-
-bool Collision(Enemy *, Ballet *)
-{
-	return false;
 }
 
 

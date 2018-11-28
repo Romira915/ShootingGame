@@ -29,36 +29,6 @@ Enemy::Enemy(int *pimage_Enemy)
 	nowMovingY = false;
 }
 
-void Enemy::init()
-{
-
-}
-
-void Enemy::Update()
-{
-	if (shotCount >= INT_MAX - 10000) {
-		shotCount = 0;
-	}
-
-	shotCount += Timecount_return();
-
-	Move_AI();
-
-	if (fabs(Playerpos_return().x - pos.x) < GetRand(100) && shotCount >= SHOT_PACE_ENEMY && GetRand(2) == 0) {
-		Ballet_Inst(pos, name);
-		shotCount = 0;
-	}
-}
-
-void Enemy::Draw()
-{
-	DrawGraph(pos.x, pos.y, *image, true);
-}
-
-void Enemy::End()
-{
-}
-
 void Enemy::Move_AI()
 {
 	Destination(GetRand(SET_SCREENSIZE_X), GetRand(SET_SCREENSIZE_Y / 2));
@@ -66,37 +36,6 @@ void Enemy::Move_AI()
 
 void Enemy::Destination(const int &destination_x, const int &destination_y)
 {
-
-
-	/*if (!nowUsing)
-	{
-		nowUsing = true;
-		nowMovingX = true;
-		nowMovingY = true;
-		moveX = destination_x;
-		moveY = destination_y;
-		if (pos.x < moveX)
-		{
-			x_flag = 1;
-		}
-		if (pos.x > moveX) {
-			x_flag = -1;
-		}
-		if (pos.x == moveX) {
-			x_flag = 0;
-		}
-		if (pos.y < moveY)
-		{
-			y_flag = 1;
-		}
-		if (pos.y > moveY) {
-			y_flag = -1;
-		}
-		if (pos.y == moveY) {
-			y_flag = 0;
-		}
-	}*/
-
 	if (!nowMovingX) {
 		nowMovingX = true;
 		moveX = destination_x;
@@ -154,7 +93,6 @@ void Enemy::Destination(const int &destination_x, const int &destination_y)
 			break;
 		}
 	}
-
 	if (nowMovingY) {
 		switch (y_flag)
 		{
@@ -183,11 +121,27 @@ void Enemy::Destination(const int &destination_x, const int &destination_y)
 			break;
 		}
 	}
+}
 
+void Enemy::Update()
+{
+	if (shotCount >= INT_MAX - 10000) {
+		shotCount = 0;
+	}
 
-	/*if (!nowMovingX && !nowMovingY) {
-		nowUsing = false;
-	}*/
+	shotCount += Timecount_return();
+
+	Move_AI();
+
+	if (fabs(Playerpos_return().x - pos.x) < GetRand(100) && shotCount >= SHOT_PACE_ENEMY && GetRand(2) == 0) {
+		Ballet_Inst(pos, name);
+		shotCount = 0;
+	}
+}
+
+void Enemy::Draw()
+{
+	DrawGraph(pos.x, pos.y, *image, true);
 }
 
 

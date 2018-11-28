@@ -13,15 +13,8 @@ public:
 
 	eName name;
 
-	virtual void init() = 0;
 	virtual void Update() = 0;
 	virtual void Draw() = 0;
-	virtual void End() = 0;
-
-	void Move_Up();
-	void Move_Down();
-	void Move_Right();
-	void Move_Left();
 
 	VECTOR Get_pos();
 	int *Get_ptrimageHandle();
@@ -30,6 +23,11 @@ public:
 	void Damage();
 
 protected:
+	void Move_Up();
+	void Move_Down();
+	void Move_Right();
+	void Move_Left();
+
 	VECTOR pos;
 	int m_hp;
 	int *image;

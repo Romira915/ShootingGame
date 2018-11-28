@@ -11,13 +11,11 @@ public:
 	~Enemy();
 	Enemy(int*);
 
-	void init();
-	void Update();
-	void Draw();
-	void End();
-
 	void Move_AI();
 	void Destination(const int&, const int&);
+
+	void Update();
+	void Draw();
 
 private:
 	int stop_y;

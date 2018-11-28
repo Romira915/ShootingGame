@@ -10,10 +10,8 @@ public:
 	Player();
 	~Player();
 
-	void init();
 	void Update();
 	void Draw();
-	void End();
 
 private:
 	int m_timecount;

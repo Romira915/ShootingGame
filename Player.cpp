@@ -16,16 +16,14 @@ Player::Player()
 
 	pos.x = SET_SCREENSIZE_X / 2;
 	pos.y = SET_SCREENSIZE_Y / 2;
+
+	*image = LoadGraph("‰æ‘œ/Ž©‹@.png");
 }
 
 Player::~Player()
 {
+	DeleteGraph(*image);
 	delete image;
-}
-
-void Player::init()
-{
-	*image = LoadGraph("‰æ‘œ/Ž©‹@.png");
 }
 
 void Player::Update()
@@ -76,9 +74,4 @@ void Player::Update()
 void Player::Draw()
 {
 	DrawGraph(pos.x, pos.y, *image, true);
-}
-
-void Player::End()
-{
-	DeleteGraph(*image);
 }

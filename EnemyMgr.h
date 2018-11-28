@@ -13,14 +13,11 @@ public:
 	~EnemyMgr();
 
 	void Instance_Enemy();
-	VECTOR *Enemy_Allpos();
 	void Damage_Mgr(int);
 	Enemy **Get_enemychild();
 
-	void init();
 	void Update();
 	void Draw();
-	void End();
 
 private:
 	Enemy *enemy_child[ENEMY_MAX];

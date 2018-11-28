@@ -12,11 +12,18 @@ EnemyMgr::EnemyMgr()
 	{
 		enemy_child[i] = NULL;
 	}
+
+	*image = LoadGraph("‰æ‘œ/‚Ä‚«.png");
 }
 
 EnemyMgr::~EnemyMgr()
 {
+	DeleteGraph(*image);
 	delete image;
+	for (int i = 0; i < ENEMY_MAX; i++)
+	{
+		delete enemy_child[i];
+	}
 }
 
 void EnemyMgr::Instance_Enemy()
@@ -40,11 +47,6 @@ Enemy ** EnemyMgr::Get_enemychild()
 	return enemy_child;
 }
 
-void EnemyMgr::init()
-{
-	*image = LoadGraph("‰æ‘œ/‚Ä‚«.png");
-}
-
 void EnemyMgr::Update()
 {
 	for (int i = 0; i < ENEMY_MAX; i++)
@@ -52,7 +54,6 @@ void EnemyMgr::Update()
 		if (enemy_child[i] != NULL)
 		{
 			enemy_child[i]->Update();
-			//enemy_child[i]->Move_AI(GetRand(SET_SCREENSIZE_X), GetRand(SET_SCREENSIZE_Y / 2));
 		}
 	}
 
@@ -84,13 +85,5 @@ void EnemyMgr::Draw()
 		{
 			enemy_child[i]->Draw();
 		}
-	}
-}
-
-void EnemyMgr::End()
-{
-	for (int i = 0; i < ENEMY_MAX; i++)
-	{
-		delete enemy_child[i];
 	}
 }

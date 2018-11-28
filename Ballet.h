@@ -11,13 +11,11 @@ public:
 	~Ballet();
 	Ballet(const VECTOR&, const eName&, int*);
 
-	void init();
-	void Update();
-	void Draw();
-	void End();
-
 	VECTOR Get_pos(eName *shot_name);
 	eName Get_isInsted();
+
+	void Update();
+	void Draw();
 
 private:
 	eName is_Insted;

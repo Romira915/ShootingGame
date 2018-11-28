@@ -23,9 +23,17 @@ Ballet::Ballet(const VECTOR &pos_Inst, const eName &name_Inst, int *pimage_balle
 	image = pimage_ballet;
 }
 
-void Ballet::init()
+VECTOR Ballet::Get_pos(eName * shot_name)
 {
+	if (shot_name != NULL) {
+		*shot_name = is_Insted;
+	}
+	return pos;
+}
 
+eName Ballet::Get_isInsted()
+{
+	return is_Insted;
 }
 
 void Ballet::Update()
@@ -43,19 +51,4 @@ void Ballet::Draw()
 	DrawGraph(pos.x, pos.y, *image, true);
 }
 
-void Ballet::End()
-{
-}
 
-VECTOR Ballet::Get_pos(eName * shot_name)
-{
-	if (shot_name != NULL) {
-		*shot_name = is_Insted;
-	}
-	return pos;
-}
-
-eName Ballet::Get_isInsted()
-{
-	return is_Insted;
-}

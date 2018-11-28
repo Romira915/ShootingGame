@@ -43,10 +43,6 @@ void Battle_init()
 	balletMgr = new BalletMgr;
 	enemyMgr = new EnemyMgr;
 
-	player->init();
-	balletMgr->init();
-	enemyMgr->init();
-
 	enemyobj = enemyMgr->Get_enemychild();
 	balletobj = balletMgr->Get_balletchild();
 
@@ -108,10 +104,6 @@ void Battle_End()
 	DeleteGraph(image_bg_ba);
 	DeleteGraph(image_end);
 	DeleteGraph(image_clear);
-
-	balletMgr->End();
-	enemyMgr->End();
-	player->End();
 
 	delete balletMgr;
 	delete enemyMgr;

@@ -10,12 +10,19 @@ BalletMgr::BalletMgr()
 	{
 		ballet_child[i] = NULL;
 	}
+
+	*image = LoadGraph("‰æ‘œ/‚½‚Ü.png");
 }
 
 
 BalletMgr::~BalletMgr()
 {
+	DeleteGraph(*image);
 	delete image;
+	for (int i = 0; i < BALLET_MAX; i++)
+	{
+		delete ballet_child[i];
+	}
 }
 
 void BalletMgr::Instance_Ballet(const VECTOR &pos_BMgrInst, const eName &name_BMgrInst)
@@ -30,36 +37,9 @@ void BalletMgr::Instance_Ballet(const VECTOR &pos_BMgrInst, const eName &name_BM
 	}
 }
 
-VECTOR * BalletMgr::Ballet_Allpos(eName *is_Insted)
-{
-	VECTOR ptr_balletpos[BALLET_MAX];
-	for (int i = 0; i < BALLET_MAX; i++)
-	{
-		if (ballet_child[i] != NULL) {
-			ptr_balletpos[i] = ballet_child[i]->Get_pos(&is_Insted[i]);
-		}
-		else
-		{
-			ptr_balletpos->x = -1;
-			ptr_balletpos->y = -1;
-		}
-	}
-	return ptr_balletpos;
-}
-
-void BalletMgr::Damage_Mgr(int i)
-{
-	ballet_child[i]->Damage();
-}
-
 Ballet ** BalletMgr::Get_balletchild()
 {
 	return ballet_child;
-}
-
-void BalletMgr::init()
-{
-	*image = LoadGraph("‰æ‘œ/‚½‚Ü.png");
 }
 
 void BalletMgr::Update()
@@ -95,13 +75,5 @@ void BalletMgr::Draw()
 		{
 			ballet_child[i]->Draw();
 		}
-	}
-}
-
-void BalletMgr::End()
-{
-	for (int i = 0; i < BALLET_MAX; i++)
-	{
-		delete ballet_child[i];
 	}
 }

@@ -61,7 +61,6 @@ void Battle_init()
 void Battle_Update() {
 	limit -= Timecount_return();
 
-	Enemy_Inst_Update();
 	balletMgr->Update();
 	enemyMgr->Update();
 	if (!player->Death_is_true())
@@ -117,18 +116,13 @@ void Battle_End()
 	delete balletMgr;
 	delete enemyMgr;
 	delete player;
+
+	DeleteFontToHandle(fontHandle_Battle);
 }
 
 void Ballet_Inst(const VECTOR &pos_battlefunc, const eName &name_battlefunc)
 {
 	balletMgr->Instance_Ballet(pos_battlefunc, name_battlefunc);
-}
-
-void Enemy_Inst_Update()
-{
-	if (GetRand(10) == 0) {
-		enemyMgr->Instance_Enemy();
-	}
 }
 
 VECTOR Playerpos_return()

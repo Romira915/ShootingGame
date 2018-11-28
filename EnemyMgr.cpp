@@ -30,23 +30,6 @@ void EnemyMgr::Instance_Enemy()
 	}
 }
 
-VECTOR * EnemyMgr::Enemy_Allpos()
-{
-	VECTOR ptr_enemypos[ENEMY_MAX];
-	for (int i = 0; i < ENEMY_MAX; i++)
-	{
-		if (enemy_child[i] != NULL) {
-			ptr_enemypos[i] = enemy_child[i]->Get_pos();
-		}
-		else
-		{
-			ptr_enemypos->x = -1;
-			ptr_enemypos->y = -1;
-		}
-	}
-	return ptr_enemypos;
-}
-
 void EnemyMgr::Damage_Mgr(int i)
 {
 	enemy_child[i]->Damage();
@@ -85,6 +68,11 @@ void EnemyMgr::Update()
 				enemy_child[i] = NULL;
 			}
 		}
+	}
+
+	if (GetRand(15) == 0)
+	{
+		Instance_Enemy();
 	}
 }
 

@@ -1,7 +1,5 @@
 #include <DxLib.h>
 #include "Keyboard.h"
-#include "Chara.h"
-#include "Player.h"
 #include "Other.h"
 #include "SceneManager.h"
 

@@ -1,7 +1,6 @@
-#include <DxLib.h>
 #include "EnemyMgr.h"
+#include <DxLib.h>
 #include "Other.h"
-#include <climits>
 
 
 EnemyMgr::EnemyMgr()

@@ -1,12 +1,11 @@
+#include "Battle.h"
 #include <DxLib.h>
 #include "Keyboard.h"
-#include "Player.h"
-#include "Battle.h"
-#include "BalletMgr.h"
 #include "Chara.h"
+#include "Player.h"
+#include "BalletMgr.h"
 #include "EnemyMgr.h"
 #include "SceneManager.h"
-#include <cstdlib>
 #include "Other.h"
 
 int image_bg_ba;

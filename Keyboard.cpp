@@ -1,5 +1,5 @@
-#include <DxLib.h>
 #include "Keyboard.h"
+#include <DxLib.h>
 
 int key[256];
 

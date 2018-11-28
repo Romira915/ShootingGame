@@ -1,8 +1,6 @@
-#include <DxLib.h>
 #include "SceneManager.h"
+#include <DxLib.h>
 #include "Other.h"
-#include "Chara.h"
-#include "Keyboard.h"
 #include "Battle.h"
 
 eScene SceneFlag = Title;

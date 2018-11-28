@@ -1,5 +1,5 @@
-#include <DxLib.h>
 #include "Ballet.h"
+#include <DxLib.h>
 #include "Battle.h"
 #include "Chara.h"
 

@@ -1,7 +1,6 @@
-#include <DxLib.h>
 #include "Other.h"
+#include <DxLib.h>
 #include "Keyboard.h"
-#include "Chara.h"
 #include "SceneManager.h"
 
 int image_title;

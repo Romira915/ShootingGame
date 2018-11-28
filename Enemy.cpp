@@ -1,9 +1,7 @@
 #include "Enemy.h"
-#include <cstdlib>
 #include "Other.h"
-#include "Battle.h"
 #include <math.h>
-
+#include "Battle.h"
 
 Enemy::Enemy()
 {

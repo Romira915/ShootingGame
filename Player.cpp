@@ -1,9 +1,8 @@
-#include <DxLib.h>
 #include "Player.h"
+#include <DxLib.h>
 #include "Keyboard.h"
 #include "Other.h"
 #include "Chara.h"
-#include "BalletMgr.h"
 #include "Battle.h"
 #include <climits>
 

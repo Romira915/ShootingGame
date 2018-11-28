@@ -1,5 +1,5 @@
-#include <DxLib.h>
 #include "BalletMgr.h"
+#include <DxLib.h>
 #include "Other.h"
 
 BalletMgr::BalletMgr()

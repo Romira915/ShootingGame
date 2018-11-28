@@ -29,9 +29,9 @@ public:
 	bool Death_is_true();
 	void Damage();
 
-	int m_hp;
 protected:
 	VECTOR pos;
+	int m_hp;
 	int *image;
 	float m_speed;
 };

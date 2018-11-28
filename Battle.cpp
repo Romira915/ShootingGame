@@ -145,10 +145,7 @@ void Collision()
 			switch (balletobj[i]->Get_isInsted())
 			{
 			case eEnemy: {
-				if (((balletobj[i]->Get_pos(NULL).x < player->Get_pos().x && player->Get_pos().x < balletobj[i]->Get_pos(NULL).x + b_width)
-					|| (player->Get_pos().x < balletobj[i]->Get_pos(NULL).x && balletobj[i]->Get_pos(NULL).x < player->Get_pos().x + p_width))
-					&& ((balletobj[i]->Get_pos(NULL).y < player->Get_pos().y + 10 && player->Get_pos().y + 10 < balletobj[i]->Get_pos(NULL).y + b_height)
-						|| (player->Get_pos().y + 10 < balletobj[i]->Get_pos(NULL).y && balletobj[i]->Get_pos(NULL).y < player->Get_pos().y + p_height)))
+				if (Collision_child(player->Get_pos(), balletobj[i]->Get_pos(NULL), p_width, b_width, p_height, b_height))
 				{
 					player->Damage();
 					balletobj[i]->Damage();
@@ -159,10 +156,7 @@ void Collision()
 				for (int j = 0; j < ENEMY_MAX; j++)
 				{
 					if (enemyobj[j] != NULL) {
-						if (((balletobj[i]->Get_pos(NULL).x < enemyobj[j]->Get_pos().x && enemyobj[j]->Get_pos().x < balletobj[i]->Get_pos(NULL).x + b_width)
-							|| (enemyobj[j]->Get_pos().x < balletobj[i]->Get_pos(NULL).x && balletobj[i]->Get_pos(NULL).x < enemyobj[j]->Get_pos().x + e_width))
-							&& ((balletobj[i]->Get_pos(NULL).y < enemyobj[j]->Get_pos().y && enemyobj[j]->Get_pos().y < balletobj[i]->Get_pos(NULL).y + b_height)
-								|| (enemyobj[j]->Get_pos().y < balletobj[i]->Get_pos(NULL).y && balletobj[i]->Get_pos(NULL).y < enemyobj[j]->Get_pos().y + e_height - 10)))
+						if (Collision_child(enemyobj[j]->Get_pos(), balletobj[i]->Get_pos(NULL), e_width, b_width, e_height, b_height))
 						{
 							enemyobj[j]->Damage();
 							balletobj[i]->Damage();
@@ -177,5 +171,22 @@ void Collision()
 		}
 	}
 }
+
+bool Collision_child(const VECTOR pos1, const VECTOR &pos2, const int &pos1_width, const int &pos2_width, const int &pos1_height, const int &pos2_height)
+{
+	if (((pos2.x < pos1.x && pos1.x < pos2.x + pos2_width)
+		|| (pos1.x < pos2.x && pos2.x < pos1.x + pos1_width))
+		&& ((pos2.y < pos1.y && pos1.y < pos2.y + pos2_height)
+			|| (pos1.y < pos2.y && pos2.y < pos1.y + pos1_height)))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+
 
 

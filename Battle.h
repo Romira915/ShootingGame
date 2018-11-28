@@ -23,9 +23,7 @@ VECTOR Playerpos_return();
 
 void Collision();
 
-bool Collision(Player*, Ballet*);
-
-bool Collision(Enemy*, Ballet*);
+bool Collision_child(const VECTOR, const VECTOR&, const int&, const int&, const int&, const int&);
 
 #endif // !DEF_BATTLE_H
 

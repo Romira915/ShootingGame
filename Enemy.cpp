@@ -17,7 +17,7 @@ Enemy::~Enemy()
 Enemy::Enemy(int *pimage_Enemy)
 {
 	name = eEnemy;
-	pos.x = rand() % (SET_SCREENSIZE_X + 1);
+	pos.x = GetRand(SET_SCREENSIZE_X + 1);
 	pos.y = 0;
 	m_speed = SPEED / 2;
 

@@ -66,6 +66,7 @@ void Title_Draw()
 void Title_End() {
 	DeleteGraph(image_title);
 	DeleteGraph(image_bg);
+	DeleteFontToHandle(font_Handle_Other);
 }
 
 int Timecount_Update() {

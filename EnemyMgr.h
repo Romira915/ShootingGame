@@ -4,7 +4,7 @@
 #include "Enemy.h"
 #include "Chara.h"
 
-#define ENEMY_MAX 5
+#define ENEMY_MAX 7
 
 class EnemyMgr : public Chara
 {
@@ -13,11 +13,11 @@ public:
 	~EnemyMgr();
 
 	void Instance_Enemy();
+	void Damage_Mgr(int);
+	Enemy **Get_enemychild();
 
-	void init();
 	void Update();
 	void Draw();
-	void End();
 
 private:
 	Enemy *enemy_child[ENEMY_MAX];

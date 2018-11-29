@@ -13,22 +13,24 @@ public:
 
 	eName name;
 
-	virtual void init() = 0;
 	virtual void Update() = 0;
 	virtual void Draw() = 0;
-	virtual void End() = 0;
 
+	VECTOR Get_pos();
+	int *Get_ptrimageHandle();
+
+	bool Death_is_true();
+	void Damage();
+
+protected:
 	void Move_Up();
 	void Move_Down();
 	void Move_Right();
 	void Move_Left();
 
-protected:
 	VECTOR pos;
-	int *image;
-	int m_x;
-	int m_y;
 	int m_hp;
+	int *image;
 	float m_speed;
 };
 

@@ -1,7 +1,6 @@
-#include <DxLib.h>
 #include "Other.h"
+#include <DxLib.h>
 #include "Keyboard.h"
-#include "Chara.h"
 #include "SceneManager.h"
 
 int image_title;
@@ -9,17 +8,16 @@ int image_bg;
 
 int selection = START_Y;
 
-int old_time = 0;
-int new_time = 0;
+int time = 0;
 int diff_time = 0;
 
-int font_Handle;
+int font_Handle_Other;
 
 void Title_init()
 {
 	image_title = LoadGraph("âÊëú/É^ÉCÉgÉã.png");
 	image_bg = LoadGraph("âÊëú/îwåi.png");
-	font_Handle = CreateFontToHandle(NULL, 64, 6, DX_FONTTYPE_ANTIALIASING);
+	font_Handle_Other = CreateFontToHandle(NULL, 64, 6, DX_FONTTYPE_ANTIALIASING);
 }
 
 void Title_Update()
@@ -59,20 +57,20 @@ void Title_Draw()
 {
 	DrawGraph(0, 0, image_bg, true);
 	DrawGraph(0, 0, image_title, true);
-	DrawStringToHandle(START_X - GetDrawStringWidthToHandle("Å®", 2, font_Handle), selection, "Å®", GetColor(255, 255, 255), font_Handle);
-	DrawStringToHandle(START_X, START_Y, "Start", GetColor(0, 255, 0), font_Handle);
-	DrawStringToHandle(EXIT_X, EXIT_Y, "Exit", GetColor(0, 255, 0), font_Handle);
+	DrawStringToHandle(START_X - GetDrawStringWidthToHandle("Å®", 2, font_Handle_Other), selection, "Å®", GetColor(255, 255, 255), font_Handle_Other);
+	DrawStringToHandle(START_X, START_Y, "Start", GetColor(0, 255, 0), font_Handle_Other);
+	DrawStringToHandle(EXIT_X, EXIT_Y, "Exit", GetColor(0, 255, 0), font_Handle_Other);
 }
 
 void Title_End() {
 	DeleteGraph(image_title);
 	DeleteGraph(image_bg);
+	DeleteFontToHandle(font_Handle_Other);
 }
 
 int Timecount_Update() {
-	old_time = new_time;
-	new_time = GetNowCount();
-	diff_time = new_time - old_time;
+	diff_time = GetNowCount() - time;
+	time = GetNowCount();
 
 	return diff_time;
 }

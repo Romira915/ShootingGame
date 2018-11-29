@@ -1,5 +1,5 @@
-#include <DxLib.h>
 #include "BalletMgr.h"
+#include <DxLib.h>
 #include "Other.h"
 
 BalletMgr::BalletMgr()
@@ -10,12 +10,19 @@ BalletMgr::BalletMgr()
 	{
 		ballet_child[i] = NULL;
 	}
+
+	*image = LoadGraph("‰æ‘œ/‚½‚Ü.png");
 }
 
 
 BalletMgr::~BalletMgr()
 {
+	DeleteGraph(*image);
 	delete image;
+	for (int i = 0; i < BALLET_MAX; i++)
+	{
+		delete ballet_child[i];
+	}
 }
 
 void BalletMgr::Instance_Ballet(const VECTOR &pos_BMgrInst, const eName &name_BMgrInst)
@@ -30,9 +37,9 @@ void BalletMgr::Instance_Ballet(const VECTOR &pos_BMgrInst, const eName &name_BM
 	}
 }
 
-void BalletMgr::init()
+Ballet ** BalletMgr::Get_balletchild()
 {
-	*image = LoadGraph("‰æ‘œ/‚½‚Ü.png");
+	return ballet_child;
 }
 
 void BalletMgr::Update()
@@ -49,8 +56,9 @@ void BalletMgr::Update()
 	{
 		if (ballet_child[i] != NULL)
 		{
-			if (ballet_child[i]->Get_pos().x < -200 || ballet_child[i]->Get_pos().x > SET_SCREENSIZE_X + 200
-				|| ballet_child[i]->Get_pos().y < -200 || ballet_child[i]->Get_pos().y > SET_SCREENSIZE_Y + 200)
+			if (ballet_child[i]->Get_pos(NULL).x < 0 || ballet_child[i]->Get_pos(NULL).x > SET_SCREENSIZE_X
+				|| ballet_child[i]->Get_pos(NULL).y < 0 || ballet_child[i]->Get_pos(NULL).y > SET_SCREENSIZE_Y
+				|| ballet_child[i]->Death_is_true())
 			{
 				delete ballet_child[i];
 				ballet_child[i] = NULL;
@@ -67,13 +75,5 @@ void BalletMgr::Draw()
 		{
 			ballet_child[i]->Draw();
 		}
-	}
-}
-
-void BalletMgr::End()
-{
-	for (int i = 0; i < BALLET_MAX; i++)
-	{
-		delete ballet_child[i];
 	}
 }

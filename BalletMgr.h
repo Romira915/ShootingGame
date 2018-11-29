@@ -13,11 +13,10 @@ public:
 	~BalletMgr();
 
 	void Instance_Ballet(const VECTOR&, const eName&);
+	Ballet **Get_balletchild();
 
-	void init();
 	void Update();
 	void Draw();
-	void End();
 
 private:
 	Ballet *ballet_child[BALLET_MAX];

@@ -32,6 +32,8 @@ int b_width, b_height;
 int fontHandle_Battle;
 double limit;
 
+int score;
+
 void Battle_init()
 {
 	image_bg_ba = LoadGraph("‰æ‘œ/”wŒi.png");
@@ -51,6 +53,8 @@ void Battle_init()
 
 	fontHandle_Battle = CreateFontToHandle(NULL, 64, 7, DX_FONTTYPE_ANTIALIASING_EDGE_4X4);
 	limit = TIMELIMIT;
+
+	score = 0;
 }
 
 void Battle_Update() {
@@ -96,6 +100,7 @@ void Battle_Draw()
 		DrawGraph(0, 0, image_end, true);
 	}
 
+	DrawFormatStringFToHandle(SET_SCREENSIZE_X * 0.867, 0, GetColor(255, 255, 255), fontHandle_Battle, "%5d", score);
 }
 
 void Battle_End()
@@ -145,6 +150,7 @@ void Collision()
 						{
 							enemyobj[j]->Damage();
 							balletobj[i]->Damage();
+							Score_Plus();
 						}
 					}
 				}
@@ -157,7 +163,7 @@ void Collision()
 	}
 }
 
-bool Collision_child(const VECTOR pos1, const VECTOR &pos2, const int &pos1_width, const int &pos2_width, const int &pos1_height, const int &pos2_height)
+bool Collision_child(const VECTOR &pos1, const VECTOR &pos2, const int &pos1_width, const int &pos2_width, const int &pos1_height, const int &pos2_height)
 {
 	if (((pos2.x < pos1.x && pos1.x < pos2.x + pos2_width)
 		|| (pos1.x < pos2.x && pos2.x < pos1.x + pos1_width))
@@ -170,6 +176,11 @@ bool Collision_child(const VECTOR pos1, const VECTOR &pos2, const int &pos1_widt
 	{
 		return false;
 	}
+}
+
+void Score_Plus()
+{
+	score += 100;
 }
 
 

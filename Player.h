@@ -15,6 +15,8 @@ public:
 
 private:
 	int m_timecount;
+	int image_width;
+	int image_height;
 };
 
 #endif // !DEF_PLAYER_H

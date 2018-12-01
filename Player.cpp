@@ -17,6 +17,7 @@ Player::Player()
 	pos.y = SET_SCREENSIZE_Y / 2;
 
 	*image = LoadGraph("‰æ‘œ/Ž©‹@.png");
+	GetGraphSize(*image, &image_width, &image_height);
 }
 
 Player::~Player()
@@ -51,17 +52,17 @@ void Player::Update()
 	{
 		pos.x = 0;
 	}
-	if (pos.x > SET_SCREENSIZE_X)
+	if (pos.x > SET_SCREENSIZE_X - image_width)
 	{
-		pos.x = SET_SCREENSIZE_X;
+		pos.x = SET_SCREENSIZE_X - image_width;
 	}
 	if (pos.y < SET_SCREENSIZE_Y / 2)
 	{
 		pos.y = SET_SCREENSIZE_Y / 2;
 	}
-	if (pos.y > SET_SCREENSIZE_Y)
+	if (pos.y > SET_SCREENSIZE_Y - image_height)
 	{
-		pos.y = SET_SCREENSIZE_Y;
+		pos.y = SET_SCREENSIZE_Y - image_height;
 	}
 
 	if (Get_key(KEY_INPUT_SPACE) >= 1 && m_timecount >= SHOT_PACE_PLAYER) {

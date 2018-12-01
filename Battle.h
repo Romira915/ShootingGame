@@ -21,7 +21,9 @@ VECTOR Playerpos_return();
 
 void Collision();
 
-bool Collision_child(const VECTOR, const VECTOR&, const int&, const int&, const int&, const int&);
+bool Collision_child(const VECTOR&, const VECTOR&, const int&, const int&, const int&, const int&);
+
+void Score_Plus();
 
 #endif // !DEF_BATTLE_H
 
